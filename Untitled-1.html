@@ -1,0 +1,93 @@
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { NgIf } from '@angular/common';
+
+@Component({
+selector: 'app-root',
+standalone: true,
+imports: [RouterOutlet, NgIf],
+template: `
+el animal es: {{animal}}
+<br>
+el dinero es: {{dinero }}
+
+{{dinero}}
+{{valorGenerico}}
+<br>
+{{ListaAnimales}}
+--- {{ListaAnimales[1]}}
+<br>
+{{ListaNumeros}}
+<br>
+
+<p *ngif="dinero === 9999">
+si dinero es mayor a 999
+</p>
+@if (dinero > 999){
+
+<p >
+si dinero es mayor a 999
+</p>
+}
+@else{
+<p>
+si dinero es menor a 999
+</p>
+}
+{{ Saluda() }}
+<br>
+{{Sumar(10, 20)}}
+{{RecorerLista()}}
+<ul>
+@for (animal of ListaAnimales; track animal){
+<li>{{animal}}</li>
+}
+</ul>
+<table>
+<thead>
+<tr>
+<th>Id</th>
+<th>Name</th>
+</tr>
+<tbody>
+@for (course of courses; track course){
+<tr>
+<td>{{course.id}}</td>
+<td>{{course.name}}</td>
+</tr>
+}
+</tbody>
+
+</table>
+
+<router-outlet />
+`,
+styles: [],
+})
+export class AppComponent {
+animal : string = 'Perro';
+dinero : number = 1000;
+valorGenerico : any = 'valor generico';
+ListaAnimales : string[] = ['Perro', 'Gato', 'Conejo'];
+ListaNumeros : number[] = [12,32,34,4,59];
+activo : boolean = false;
+courses = [
+{id: 1, name: 'course1'},
+{id: 2, name: 'course2'},
+{id: 3, name: 'course3'},
+];
+
+Sumar (a: number, b: number){
+this.dinero = 500;
+
+return a + b;
+}
+RecorerLista(){
+this.ListaNumeros.forEach((animal) => {
+console.log(animal);
+});
+}
+Saluda(){
+return 'Hola Mundo';
+}
+}

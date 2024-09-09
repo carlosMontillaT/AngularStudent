@@ -1,0 +1,37 @@
+<div style="display: flex; justify-content: space-around;">
+    
+    <!-- Formulario de entrada -->
+    <div style="border: 1px solid black; padding: 10px;">
+      <h3>Datos Personales</h3>
+      <form (ngSubmit)="onSubmit()">
+        <label for="nombre">Nombre</label><br>
+        <input id="nombre" [(ngModel)]="datos.nombre" name="nombre" type="text">
+        
+        <label for="apellido">Apellido</label><br>
+        <input id="apellido" [(ngModel)]="datos.apellido" name="apellido" type="text">
+  
+        <label for="direccion">Dirección</label><br>
+        <input id="direccion" [(ngModel)]="datos.direccion" name="direccion" type="text">
+  
+        <label for="numeros">Números de contactos</label><br>
+        <input id="numeros" [(ngModel)]="numero" name="numero" type="text">
+        <button type="button" (click)="agregarNumero()">Agregar</button>
+        
+        <button type="submit">Enviar</button>
+        
+      </form>
+    </div>
+  
+    <!-- Visualización de los datos -->
+    <div *ngIf="enviado" style="border: 1px solid black; padding: 10px;">
+      <h3>Datos Personales</h3>
+      <p><strong>Nombre:</strong> {{datos.nombre}}</p>
+      <p><strong>Apellido:</strong> {{datos.apellido}}</p>
+      <p><strong>Dirección:</strong> {{datos.direccion}}</p>
+      <p><strong>Listado de números:</strong></p>
+      <ul>
+        <li *ngFor="let num of datos.numeros">{{num}}</li>
+      </ul>
+    </div>
+  </div>
+  

@@ -1,0 +1,13 @@
+
+<style>
+
+
+</style>
+<app-selectornumerico [minimo] = "1" [maximo]="10" #selector1 ></app-selectornumerico>
+<button (click)="selector1.fijar(1)">Fijar 1</button>
+<button (click)="selector1.fijar(5)">Fijar 5</button>
+<button (click)="selector1.fijar(10)">Fijar 10</button>
+
+<app-visualizador-datos-component [datos] ="misDatos"> </app-visualizador-datos-component>
+
+<router-outlet /> 
